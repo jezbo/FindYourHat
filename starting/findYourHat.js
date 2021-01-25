@@ -9,10 +9,13 @@ const loop = () => {
     const time = () => (3*message.length*225)+225;
     let exit = false;
     const gameConclusion = game();
+    
     if(gameConclusion==='exit') exit=true;
+    
     else if(gameConclusion==='reset') {
         process.stdout.cursorTo(0,0);
         process.stdout.clearScreenDown();
+        exit=true;
         loop();
     }
     else if(gameConclusion==='win') {
