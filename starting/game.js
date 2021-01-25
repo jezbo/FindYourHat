@@ -1,7 +1,6 @@
 const { chooseLevel } = require('./choose-level.js');
 const Map = require('./map.js');
 const { play } = require('./play.js');
-const { winLoseRoutine } = require('./winLoseRoutine');
 
  exports.game = () => {
         let gameOver = true;
