@@ -1,6 +1,6 @@
 const { move } = require('./move');
 
-exports.verifyMap = (mapArray, startPosition, winCriteria, passableTiles) {
+exports.verifyMap = (mapArray, startPosition, winCriteria, passableTiles) => {
     //map dimensions, assuming symmetry 
     const testMap = mapArray;
     let verified = false;
