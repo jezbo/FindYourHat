@@ -2,8 +2,6 @@ const { game } = require('./game');
 const { textAnimation } = require('./textAnimation');
 const { retryPrompt } = require('./retryPrompt');
 
-
-
 const loop = () => {
     let message='';
     const time = () => (3*message.length*225)+225;
