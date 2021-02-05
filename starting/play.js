@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')({sigint: true});
 const { move } = require('./move');
 const { print } = require('./print');
 
-exports.play = (mapArray,startingPosition) => {
+exports.play = (mapArray,startingPosition,mapTiles) => {
     const map = mapArray;
     const moves = {
         u:{y:-1, x:0},
@@ -40,7 +40,7 @@ exports.play = (mapArray,startingPosition) => {
             if(
                 newPosition
                 &&
-                map[newPosition.y][newPosition.x]==='^'
+                map[newPosition.y][newPosition.x]===mapTiles.hat
             ) {
                 endGame=true;
                 return 'win'
@@ -48,10 +48,10 @@ exports.play = (mapArray,startingPosition) => {
             else if(
                 newPosition
                 &&
-                map[newPosition.y][newPosition.x]==='O'
+                map[newPosition.y][newPosition.x]===mapTiles.hole
             ) {
-                map[position.y][position.x] = '*';
-                map[newPosition.y][newPosition.x] = 'X';
+                map[position.y][position.x] = mapTiles.path;
+                map[newPosition.y][newPosition.x] = mapTiles.death;
                 endGame=true;
                 print(map);
                 return 'lose'
@@ -59,18 +59,18 @@ exports.play = (mapArray,startingPosition) => {
             else if(
                 newPosition
                 &&
-                map[newPosition.y][newPosition.x]==='░'
+                map[newPosition.y][newPosition.x]===mapTiles.field
             ) {
-                map[position.y][position.x] = '*';
-                map[newPosition.y][newPosition.x] = '|';
+                map[position.y][position.x] = mapTiles.path;
+                map[newPosition.y][newPosition.x] = mapTiles.player;
                 position = newPosition;
             }
             else if(
                 newPosition
                 &&
-                map[newPosition.y][newPosition.x]==='*'
+                map[newPosition.y][newPosition.x]===mapTiles.path
             ) {
-                map[newPosition.y][newPosition.x] = '|';
+                map[newPosition.y][newPosition.x] = mapTiles.player;
                 position = newPosition;
             }
             else if(!newPosition) {

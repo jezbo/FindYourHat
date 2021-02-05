@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')({sigint: true});
 
 exports.retryPrompt = () => {
-    const userInput = prompt('Play again (y/n): ');
+    const userInput = prompt('Play again? Enter \'y\': ');
     const input = userInput.toLowerCase();
     if(input==='y' || input==='yes') {
         return true;

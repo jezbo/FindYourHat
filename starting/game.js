@@ -4,11 +4,20 @@ const { play } = require('./play.js');
 const { verifyMap } = require('./verify-map.js');
 
  exports.game = () => {
+        //console.log("\x1b[34mnnamdi\x1b[89m")
         let gameOver = true;
         let mapArray = [];
         let startPosition = {x:0, y:0};
         let verified = false;
-        let newMap;
+        const map = new Map();
+        const mapTiles = {
+                hat: map.hatTile,
+                hole: map.holeTile,
+                field: map.fieldTile,
+                path: map.pathTile,
+                player: map.playerTile,
+                death: map.deathTile
+        };
 
         //User Selects Level
         const level = chooseLevel(gameOver);
@@ -16,14 +25,13 @@ const { verifyMap } = require('./verify-map.js');
         
 
         while(!verified) {
-                const map = new Map();
                 map.createMap(level.y, level.x);
                 startPosition = map.position;
                 mapArray = map.map;
-                verified = verifyMap(mapArray,startPosition,map.hatTile,map.fieldTile)
+                verified = verifyMap(mapArray,startPosition,mapTiles.hat,mapTiles.field)
         }
         
-        const status = play(mapArray,startPosition);
+        const status = play(mapArray,startPosition,mapTiles);
         if (status==='exit') return 'exit';
         else if(status==='reset') return 'reset';
         else if(status==='win') return 'win';

@@ -12,14 +12,13 @@ module.exports = class Map {
         this.position = {y:0, x:0};
         this.map = [];
         this.hat = {y:0, x:0}
-        
         //Map tiles
-        this.hatTile = '^';
-        this.holeTile = 'O';
-        this.fieldTile = '░';
-        this.pathTile = '*';
-        this.playerTile = '|';
-        this.deathTile = 'X';
+        this.hatTile = '\x1b[1m\x1b[91m\x1b[42m▲\x1b[49m\x1b[39m\x1b[22m\x1b[0m';
+        this.holeTile = '\x1b[30m\x1b[42m⚉\x1b[49m\x1b[89m\x1b[0m';
+        this.fieldTile = '\x1b[42m░\x1b[49m\x1b[0m';
+        this.pathTile = '\x1b[102m*\x1b[49m\x1b[0m';
+        this.playerTile = '\x1b[95m\x1b[45mቶ\x1b[49m\x1b[39m\x1b[0m';
+        this.deathTile = '\x1b[101mX\x1b[49m\x1b[0m';
     }
 
     //***Place hat in map w. dimensions ySize:xSize***
